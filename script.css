@@ -1,23 +1,29 @@
-/*
-styles.css */
+/* styles.css */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #ffdde1);
+    font-family: "Poppins", sans-serif;
+    margin: 0;
 }
 .login-box {
     background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    width: 320px;
     text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 .login-box h2 {
     margin-bottom: 20px;
+    color: #333;
 }
 .input-group {
     margin-bottom: 15px;
@@ -26,35 +32,65 @@ body {
 .input-group label {
     display: block;
     font-weight: bold;
+    color: #555;
 }
 .input-group input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
     font-size: 16px;
+    transition: 0.3s;
+}
+.input-group input:focus {
+    border-color: #ff758c;
+    outline: none;
 }
 .login-btn {
-    background: #007bff;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
+    transition: 0.3s;
 }
 .login-btn:hover {
-    background: #0056b3;
+    background: linear-gradient(135deg, #ff5f6d, #ff7eb3);
 }
-.signup-link {
+#error-msg {
+    color: red;
     margin-top: 10px;
     font-size: 14px;
 }
+.signup-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
 .signup-link a {
-    color: #007bff;
+    color: #ff5f6d;
     text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
 }
 .signup-link a:hover {
     text-decoration: underline;
+    color: #ff3b5c;
+}
+
+// script.js
+function validateLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var errorMsg = document.getElementById("error-msg");
+
+    if (username === "" || password === "") {
+        errorMsg.textContent = "Please fill in all fields";
+    } else {
+        errorMsg.textContent = "";
+        alert("Login successful");
+    }
 }
